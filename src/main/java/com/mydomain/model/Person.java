@@ -19,4 +19,19 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Person == false)
+			return false;
+
+		Person p = (Person) obj;
+		boolean isAgeSame = age == p.getAge();
+		boolean isNameSame = false;
+		if (name != null)
+			isNameSame = name.equals(p.getName());
+		else
+			isNameSame = p.getName() == null;
+		return isAgeSame && isNameSame;
+	}
 }
