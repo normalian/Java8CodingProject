@@ -46,25 +46,25 @@ public class SampleTest {
 		{
 			Person p = new Person();
 			p.setAge(23);
-			p.setName("���1");
+			p.setName("若者1");
 			list.add(p);
 		}
 		{
 			Person p = new Person();
 			p.setAge(43);
-			p.setName("��������1");
+			p.setName("おっさん1");
 			list.add(p);
 		}
 		{
 			Person p = new Person();
 			p.setAge(17);
-			p.setName("���2");
+			p.setName("若者2");
 			list.add(p);
 		}
 		{
 			Person p = new Person();
 			p.setAge(31);
-			p.setName("��������2");
+			p.setName("おっさん2");
 			list.add(p);
 		}
 
