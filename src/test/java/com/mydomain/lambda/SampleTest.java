@@ -8,7 +8,9 @@ import org.junit.Test;
 
 import com.mydomain.model.Person;
 
-public class Sample {
+public class SampleTest {
+	// http://qiita.com/kamatama_41/items/c35e29d930b074a3cd2f
+
 	@Test
 	public void removeIfTest01() {
 		int expected = 2;
@@ -26,7 +28,6 @@ public class Sample {
 		boolean expected = true;
 		boolean actual;
 
-		// 30Î–¢–‚ÌáÒ‚ğ 50ÎˆÈã‚É
 		List<Person> list = getSampleList();
 
 		list.replaceAll((Person p) -> {
@@ -35,7 +36,6 @@ public class Sample {
 			return p;
 		});
 
-		// 30ÎˆÈã‚µ‚©‚¢‚È‚¢ó‘Ô‚Ö
 		actual = list.stream().filter(p -> p.getAge() <= 30).count() == 0;
 		Assert.assertEquals(expected, actual);
 	}
@@ -46,25 +46,25 @@ public class Sample {
 		{
 			Person p = new Person();
 			p.setAge(23);
-			p.setName("áÒ1");
+			p.setName("ï¿½ï¿½ï¿½1");
 			list.add(p);
 		}
 		{
 			Person p = new Person();
 			p.setAge(43);
-			p.setName("‚¨‚Á‚³‚ñ1");
+			p.setName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1");
 			list.add(p);
 		}
 		{
 			Person p = new Person();
 			p.setAge(17);
-			p.setName("áÒ2");
+			p.setName("ï¿½ï¿½ï¿½2");
 			list.add(p);
 		}
 		{
 			Person p = new Person();
 			p.setAge(31);
-			p.setName("‚¨‚Á‚³‚ñ2");
+			p.setName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2");
 			list.add(p);
 		}
 

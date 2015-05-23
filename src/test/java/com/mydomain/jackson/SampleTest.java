@@ -10,6 +10,10 @@ import org.junit.Test;
 import com.mydomain.model.Person;
 
 public class SampleTest {
+	
+	// http://www.mkyong.com/java/how-to-convert-java-object-to-from-json-jackson/
+	// http://so-zou.jp/software/tech/programming/java/package/json/jackson.htm
+	
 	@Test
 	public void readTest01() throws JsonParseException, IOException {
 		Person expected = new Person();
