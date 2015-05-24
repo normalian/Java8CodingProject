@@ -2,7 +2,7 @@ package com.mydomain.model;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Person {
 	int age;
 	String name;
@@ -30,11 +30,8 @@ public class Person {
 
 		Person p = (Person) obj;
 		boolean isAgeSame = age == p.getAge();
-		boolean isNameSame = false;
-		if (name != null)
-			isNameSame = name.equals(p.getName());
-		else
-			isNameSame = p.getName() == null;
+		boolean isNameSame = name == null ? p.getName() == null : //
+				name.equals(p.getName());
 		return isAgeSame && isNameSame;
 	}
 }
