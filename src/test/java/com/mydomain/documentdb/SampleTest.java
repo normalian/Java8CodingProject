@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
 
+import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -33,6 +34,12 @@ public class SampleTest {
 
 	// TodoList 管理のサンプルアプリが参考になる
 	// http://azure.microsoft.com/en-us/documentation/articles/documentdb-java-application/
+	
+	// ドキュメント作成系
+	// https://msdn.microsoft.com/ja-jp/library/azure/dn803933.aspx
+	
+	// プレビューの制限
+	// http://azure.microsoft.com/ja-jp/documentation/articles/documentdb-limits/
 
 	// Define an id for your database and collection
 	private static final String DATABASE_ID = "TestDB";
@@ -79,6 +86,26 @@ public class SampleTest {
 		ObjectMapper mapper = new ObjectMapper();
 		actual = mapper.readValue(documentList.get(0).toString(), Person.class);
 
+		Assert.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void createTest01() throws JsonGenerationException,
+			JsonMappingException, IOException, DocumentClientException {
+		Person expected = new Person();
+		expected.setName("とても普通");
+		expected.setAge(37);
+
+		boolean disableAutomaticIdGeneration = false;
+		Document document = new Document(
+				new ObjectMapper().writeValueAsString(expected));
+		Document response = documentClient.createDocument(//
+				getTestCollection().getSelfLink(),//
+				document, //
+				null, //
+				disableAutomaticIdGeneration).getResource();
+		Person actual = new ObjectMapper().readValue(response.toString(),
+				Person.class);
 		Assert.assertEquals(expected, actual);
 	}
 

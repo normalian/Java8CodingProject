@@ -1,5 +1,6 @@
 package com.mydomain.lambda;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,58 @@ public class SampleTest {
 
 		actual = list.stream().filter(p -> p.getAge() <= 30).count() == 0;
 		Assert.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void filterTest01() {
+		long expected = 1;
+		long actual;
+
+		List<Person> list = getSampleList();
+		actual = list.stream().filter(p -> p.getAge() < 20).count();
+
+		Assert.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void functionalInterfaceTest01() {
+		IsNumberInterface isNumberInterface1 = (String value) -> {
+			try {
+				new BigDecimal(value);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
+		};
+
+		boolean expected = true;
+		boolean actual = isNumberInterface1.check("01");
+
+		Assert.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void functionalInterfaceTest02() {
+		IsNumberInterface isNumberInterface1 = _val -> {
+			try {
+				new BigDecimal(_val);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
+		};
+
+		boolean expected = true;
+		boolean actual = isNumberInterface1.check("01");
+
+		Assert.assertEquals(expected, actual);
+	}
+
+	@Test
+	public void innerClassTest01() {
+		class A {
+
+		}
 	}
 
 	List<Person> getSampleList() {
