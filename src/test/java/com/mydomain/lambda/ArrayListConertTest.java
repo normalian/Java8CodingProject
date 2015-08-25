@@ -1,15 +1,14 @@
 package com.mydomain.lambda;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.junit.Test;
-
 import junit.framework.Assert;
 
-public class ArrayListConert {
+import org.junit.Test;
+
+public class ArrayListConertTest {
 
 	@Test
 	public void test01() {
@@ -17,12 +16,8 @@ public class ArrayListConert {
 		int expected = 2;
 		int actual;
 
-		List<String> list = new ArrayList<String>();
-		list.add("aaa");
-		list.add("aaa11");
-		list.add("aaa2");
-		list.add("aaa33");
-		list.add("aaa4");
+		List<String> list = Arrays.asList("aaa", "aaa11", "aaa2", "aaa33",
+				"aaa4");
 
 		Stream<String> ss = list.stream().filter(s -> s.length() > 4);
 		String[] sAry = ss.toArray(size -> new String[size]);
@@ -39,12 +34,8 @@ public class ArrayListConert {
 		int expected = 2;
 		int actual;
 
-		List<String> list = new ArrayList<String>();
-		list.add("aaa");
-		list.add("aaa11");
-		list.add("aaa2");
-		list.add("aaa33");
-		list.add("aaa4");
+		List<String> list = Arrays.asList("aaa", "aaa11", "aaa2", "aaa33",
+				"aaa4");
 
 		actual = Arrays.asList(
 				list.stream().filter(s -> s.length() > 4)
